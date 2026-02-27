@@ -1,0 +1,39 @@
+import java.util.*;
+class Solution{
+	
+	public static void main(String []argh)
+	{
+		Scanner sc = new Scanner(System.in);
+		boolean flag=false;
+		while (sc.hasNext()) {
+			String input=sc.next();
+            System.out.println(sorts(input));
+            
+        }
+    }
+    public static boolean sorts(String a)
+    {
+        Stack<Character> s=new Stack<>();
+        for(int i=0;i<a.length();i++)
+        {
+           char c=a.charAt(i);
+           if(c=='(' || c=='[' || c=='{')
+           {
+             s.push(c);
+           }
+           
+           else if(c==')' || c==']' || c=='}')
+           {
+            if(s.isEmpty()) return false;
+            char t=s.pop();
+             if ((c == ')' && t != '(') || 
+                    (c == ']' && t != '[') || 
+                    (c == '}' && t != '{')) {
+                   return false;
+                }
+            }
+        }
+        return s.isEmpty();
+    }
+}            
+		
