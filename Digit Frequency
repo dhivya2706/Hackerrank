@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() { 
+   int i;
+   char ch[1000];
+   int a[] = {0,0,0,0,0,0,0,0,0,0};
+   scanf("%s",&ch);
+   for(i=0; i<strlen(ch); i++)
+   {
+    if(isdigit(ch[i]))
+    {
+     a[ch[i]-'0'] += 1;
+    }
+   }
+   for(i=0; i<10; i++)
+   {
+    printf("%d ",a[i]);
+   }
+    return 0;
+}
