@@ -1,0 +1,14 @@
+from itertools import combinations
+
+n = int(input())
+arr = input().split()
+k = int(input())
+
+all_combos = list(combinations(arr, k))
+
+total = len(all_combos)
+no_a = sum(1 for combo in all_combos if 'a' not in combo)
+
+probability = 1 - (no_a / total)
+
+print(f"{probability:.4f}")
