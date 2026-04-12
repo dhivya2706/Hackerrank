@@ -1,0 +1,11 @@
+import numpy as np
+
+n = int(input())
+
+matrix = [list(map(float, input().split())) for _ in range(n)]
+
+arr = np.array(matrix)
+
+det = np.linalg.det(arr)
+
+print(round(det, 2))
