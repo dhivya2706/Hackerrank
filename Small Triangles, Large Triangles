@@ -1,0 +1,17 @@
+
+double area_sq(triangle t) {
+    double s = (t.a + t.b + t.c) / 2.0;
+    return s * (s - t.a) * (s - t.b) * (s - t.c);
+}
+void sort_by_area(triangle* tr, int n) {
+	for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (area_sq(tr[i]) > area_sq(tr[j])) {
+                triangle temp = tr[i];
+                tr[i] = tr[j];
+                tr[j] = temp;
+            }
+        }
+    }
+}
+
