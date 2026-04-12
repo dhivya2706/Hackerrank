@@ -1,0 +1,16 @@
+from functools import reduce
+from math import gcd
+
+def product(fracs):
+    num = reduce(lambda x, y: x * y[0], fracs, 1)
+    den = reduce(lambda x, y: x * y[1], fracs, 1)
+    
+    g = gcd(num, den)
+    return num // g, den // g
+
+
+n = int(input())
+fracs = [tuple(map(int, input().split())) for _ in range(n)]
+
+num, den = product(fracs)
+print(num, den)
