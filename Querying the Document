@@ -1,0 +1,53 @@
+
+
+char* kth_word_in_mth_sentence_of_nth_paragraph(char**** document, int k, int m, int n) {
+     return document[n-1][m-1][k-1];
+}
+
+char** kth_sentence_in_mth_paragraph(char**** document, int k, int m) { 
+    return document[m-1][k-1];
+}
+
+char*** kth_paragraph(char**** document, int k) {
+    return document[k-1];
+}
+
+char**** get_document(char* text) {
+    char**** document = malloc(MAX_PARAGRAPHS * sizeof(char***));
+
+    int p = 0;
+    char* para_ctx;
+    char* paragraph = strtok_r(text, "\n", &para_ctx);
+
+    while (paragraph) {
+        document[p] = malloc(MAX_CHARACTERS * sizeof(char**));
+        int s = 0;
+
+        char* sent_ctx;
+        char* sentence = strtok_r(paragraph, ".", &sent_ctx);
+
+        while (sentence) {
+            document[p][s] = malloc(MAX_CHARACTERS * sizeof(char*));
+            int w = 0;
+
+            char* word_ctx;
+            char* word = strtok_r(sentence, " ", &word_ctx);
+
+            while (word) {
+                document[p][s][w] = malloc(strlen(word) + 1);
+                strcpy(document[p][s][w], word);
+                w++;
+                word = strtok_r(NULL, " ", &word_ctx);
+            }
+
+            s++;
+            sentence = strtok_r(NULL, ".", &sent_ctx);
+        }
+
+        p++;
+        paragraph = strtok_r(NULL, "\n", &para_ctx);
+    }
+
+    return document;
+}
+
