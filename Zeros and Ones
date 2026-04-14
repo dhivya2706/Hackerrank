@@ -1,0 +1,12 @@
+
+import numpy as np
+
+n = input()
+
+l1 = list(map(int,n.split(' ')))
+
+arr = np.zeros((l1),dtype=int) 
+print(arr) 
+arr = np.ones((l1),dtype=int)
+print(arr)
+
